@@ -1,0 +1,235 @@
+/* Base Styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  background: #111;
+  color: white;
+  line-height: 1.5;
+}
+
+.hero-section {
+  position: relative;
+  width: 100%;
+  color: white;
+  overflow: hidden;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  background-color: #8e0000;
+}
+
+/* Image Area */
+.hero-image-area {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 60%;
+  height: 100%;
+  background: url('/assets/heropng.png') no-repeat center center/cover;
+  z-index: 0;
+}
+
+/* Black Overlay for Image */
+.hero-image-area::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.75);
+  z-index: 1;
+}
+
+/* Red Slope (Desktop) */
+.hero-slope-red {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 55%;
+  height: 100%;
+  background: #8e0000;
+  clip-path: polygon(25% 0, 100% 0, 100% 100%, 0% 100%);
+  z-index: 0;
+}
+
+/* Gradient overlay (Mobile) */
+.hero-gradient-overlay {
+  display: none;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 80px 20px;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.text-content {
+  flex: 1;
+  max-width: 550px;
+  z-index: 3;
+}
+
+.text-content .tagline {
+  text-transform: uppercase;
+  font-weight: 600;
+  color: #bbb;
+  margin-bottom: 10px;
+}
+
+.text-content h1 {
+  font-size: 2.8rem;
+  font-weight: 800;
+  line-height: 1.2;
+  text-transform: uppercase;
+  margin: 0 0 20px;
+}
+
+.text-content .subtext {
+  font-size: 1rem;
+  color: #ddd;
+  margin-bottom: 30px;
+  max-width: 90%;
+}
+
+.call-button {
+  display: inline-block;
+  background-color: #e30613;
+  color: white;
+  padding: 12px 24px;
+  border-radius: 4px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: background 0.3s ease;
+}
+
+.call-button:hover {
+  background-color: #ff1a1a;
+}
+
+/* Quote Box — Glassmorphism */
+.quote-form {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  padding: 30px;
+  color: white;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+  flex: 1;
+  min-width: 340px;
+  max-width: 400px;
+  z-index: 3;
+}
+
+.quote-form h3 {
+  margin-bottom: 20px;
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: white;
+}
+
+.quote-form form input,
+.quote-form form textarea {
+  width: 100%;
+  margin-bottom: 15px;
+  padding: 10px 14px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 6px;
+  font-size: 0.95rem;
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+}
+
+.quote-form form input::placeholder,
+.quote-form form textarea::placeholder {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.quote-form form textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+.quote-form button {
+  background-color: #e30613;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  font-weight: 700;
+  cursor: pointer;
+  width: 100%;
+  border-radius: 6px;
+  transition: background 0.3s ease;
+}
+
+.quote-form button:hover {
+  background-color: #ff1a1a;
+}
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+  .hero-section {
+    background: none;
+    flex-direction: column;
+    justify-content: center;
+    padding: 60px 20px;
+  }
+
+  .hero-image-area {
+    width: 100%;
+    height: 100%;
+    background: url('/assets/heropng.png') no-repeat center center/cover;
+  }
+
+  .hero-image-area::before {
+    background: none;
+  }
+
+  .hero-gradient-overlay {
+    display: block;
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.6), #8e0000 85%);
+    z-index: 1;
+  }
+
+  .hero-slope-red {
+    display: none;
+  }
+
+  .hero-content {
+    flex-direction: column;
+    align-items: center;
+    padding: 0;
+    gap: 30px;
+    z-index: 3;
+    text-align: center;
+  }
+
+  .text-content,
+  .quote-form {
+    max-width: 100%;
+    z-index: 3;
+  }
+
+  .text-content h1 {
+    font-size: 2.2rem;
+  }
+
+  .text-content .subtext {
+    max-width: 100%;
+  }
+}

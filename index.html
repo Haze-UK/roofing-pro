@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Roofing Pro Manchester</title>
+  <link rel="stylesheet" href="css/header.css" />
+  <link rel="stylesheet" href="css/hero.css" />
+  <link rel="stylesheet" href="css/cara.css" />
+  <link rel="stylesheet" href="css/testi.css" />
+  <link rel="stylesheet" href="css/whyus.css" />
+  <script src="script.js" crossorigin="anonymous"></script>
+</head>
+<body>
+
+  <div id="header"></div>
+  <div id="hero"></div>
+  <div id="cara"></div>
+  <div id="testi"></div>
+  <div id="whyus"></div>
+
+  <script>
+    // Load each section
+    fetch('header.html')
+      .then(res => res.text())
+      .then(data => {
+        document.getElementById('header').innerHTML = data;
+      });
+
+    fetch('hero.html')
+      .then(res => res.text())
+      .then(data => {
+        document.getElementById('hero').innerHTML = data;
+      });
+
+    fetch('cara.html')
+      .then(res => res.text())
+      .then(data => {
+        document.getElementById('cara').innerHTML = data;
+      });
+
+    fetch('testi.html')
+      .then(res => res.text())
+      .then(data => {
+        document.getElementById('testi').innerHTML = data;
+        initTestimonials();
+      });
+
+    fetch('whyus.html')
+      .then(res => res.text())
+      .then(data => {
+        document.getElementById('whyus').innerHTML = data;
+      });
+
+    function initTestimonials() {
+      const testimonials = [
+        {
+          stars: 5,
+          text: "Eddie worked with great skill and professionalism. He built our flat roof quickly and cleanly. A job well done",
+          author: "Vihaan Teo.",
+          meta: "4 days ago · Google"
+        },
+        {
+          stars: 5,
+          text: "Eddie completed the chimney repair without a hitch. His work was tidy, quick, and professional. We couldn’t have asked for better service.",
+          author: "Nicholas Baker.",
+          meta: "A week ago · Google"
+        },
+        {
+          stars: 5,
+          text: "James handled our new flat roof project like a pro. He stayed organized and delivered great results. Very efficient and easy to work with. Superb job.",
+          author: "Rudy Eliel.",
+          meta: "6 days ago · Google"
+        },
+        {
+          stars: 5,
+          text: "Peter was professional, punctual, and skilled. He handled our flat roof project with ease. Clean work and excellent communication. Would happily hire again.",
+          author: "Aden Sweety.",
+          meta: "6 days ago · Google"
+        }
+      ];
+
+      let current = 0;
+      const container = document.getElementById("testimonial-slider");
+
+      function renderTestimonial(index) {
+        const t = testimonials[index];
+        const stars = '★'.repeat(t.stars) + '☆'.repeat(5 - t.stars);
+        container.innerHTML = `
+          <div class="testimonial-slide active">
+            <div class="testimonial-stars">${stars}</div>
+            <div class="testimonial-text">“${t.text}”</div>
+            <div class="testimonial-author">${t.author}</div>
+            <div class="testimonial-meta">${t.meta}</div>
+            <div class="quote-icon">”</div>
+          </div>
+        `;
+      }
+
+      function cycleTestimonials() {
+        container.firstElementChild?.classList.remove("active");
+        setTimeout(() => {
+          renderTestimonial(current);
+          current = (current + 1) % testimonials.length;
+        }, 400);
+      }
+
+      renderTestimonial(current);
+      setInterval(cycleTestimonials, 6000);
+    }
+  </script>
+</body>
+</html>
+
+<script src="script.js"></script>
+</body>
+</html>
