@@ -26,41 +26,11 @@
 <div id="cara">
   <!-- other cara content -->
 </div>
+<div id="whyus">
+  <!-- other cara content -->
+</div>
 
-
-  <script>
-    // Load each section
-    fetch('header.html')
-      .then(res => res.text())
-      .then(data => {
-        document.getElementById('header').innerHTML = data;
-      });
-
-    fetch('hero.html')
-      .then(res => res.text())
-      .then(data => {
-        document.getElementById('hero').innerHTML = data;
-      });
-
-    fetch('cara.html')
-      .then(res => res.text())
-      .then(data => {
-        document.getElementById('cara').innerHTML = data;
-      });
-
-    fetch('testi.html')
-      .then(res => res.text())
-      .then(data => {
-        document.getElementById('testi').innerHTML = data;
-        initTestimonials();
-      });
-
-    fetch('whyus.html')
-      .then(res => res.text())
-      .then(data => {
-        document.getElementById('whyus').innerHTML = data;
-      });
-
+<script>
     function initTestimonials() {
       const testimonials = [
         {
