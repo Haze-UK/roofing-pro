@@ -13,24 +13,45 @@
 </head>
 <body>
 
-<div id="header">
-  <img src="assets/logo.png" alt="Company Logo" />
-  <!-- other header content here -->
-</div>
+  <div id="header"></div>
+  <div id="hero"></div>
+  <div id="cara"></div>
+  <div id="testi"></div>
+  <div id="whyus"></div>
 
-<div id="hero">
-  <img src="assets/hero.jpg" alt="Hero Background" />
-  <!-- other hero content here -->
-</div>
+  <script>
+    // Load each section
+    fetch('header.html')
+      .then(res => res.text())
+      .then(data => {
+        document.getElementById('header').innerHTML = data;
+      });
 
-<div id="cara">
-  <!-- other cara content -->
-</div>
-<div id="whyus">
-  <!-- other cara content -->
-</div>
+    fetch('hero.html')
+      .then(res => res.text())
+      .then(data => {
+        document.getElementById('hero').innerHTML = data;
+      });
 
-<script>
+    fetch('cara.html')
+      .then(res => res.text())
+      .then(data => {
+        document.getElementById('cara').innerHTML = data;
+      });
+
+    fetch('testi.html')
+      .then(res => res.text())
+      .then(data => {
+        document.getElementById('testi').innerHTML = data;
+        initTestimonials();
+      });
+
+    fetch('whyus.html')
+      .then(res => res.text())
+      .then(data => {
+        document.getElementById('whyus').innerHTML = data;
+      });
+
     function initTestimonials() {
       const testimonials = [
         {
